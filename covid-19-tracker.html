@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="covid-tracker1/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <title>Covid-19 Tracker</title>
+</head>
+<body>
+    <header>    
+        <div class="personal-info"></div>
+            <p class="rainbow-text-simple" id="contact-email">
+                <a href="mailto:josuecaidor@gmail.com">Josuecaidor@gmail.com</a>
+            </p>
+            <p class="rainbow-text-static" id="job-title">
+                Biologist + Bioinformatician
+            </p>
+            <p id="full-name">
+                <a href="index.html">Josue J. <br> Caidor</a>
+             </p>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">About</a>
+                </li>
+                <li>
+                    <a href="projects.html">Projects</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Covid-19 Tracker</h1>
+        <hr>
+        <!-- <div style="overflow-y: auto;">
+            <svg width="960" height="500"></svg>
+        </div> -->
+        <article>
+            <div>
+                <pre>
+                    <br>
+    data <- read.csv('https://covid.ourworldindata.org/data/owid-covid-data.csv')
+    yesterday <- Sys.Date() - 1
+    data_cleaned <- data %>%
+        select(iso_code, continent, location, total_cases, total_deaths, new_deaths, date) %>%
+        filter(date== yesterday & location != "World")<br>
+                </pre>
+                <pre>
+                    <br>
+    library(plotly)<br>
+    data_cleaned$hover <- with(data_cleaned, paste(location, '&lt;br&gt;', 
+                            "Total Cases: ", total_cases, '&lt;br&gt;', 
+                            "Total Deaths: ", total_deaths, '&lt;br&gt;', 
+                            "Date: ", date))<br>
+    # light grey boundaries
+    l <- list(color = toRGB("grey"), width = 0.5)
+    # specify map projection/options
+    g <- list(
+    showframe = FALSE,
+    showcoastlines = FALSE,
+    projection = list(type = 'Mercator')
+    )
+    fig <- plot_geo(data_cleaned) %>% 
+    add_trace(
+        z = ~total_deaths, color = ~total_deaths, text = ~hover, colors = 'Greens',
+        text = ~location, locations = ~iso_code, marker = list(line = l)) %>%
+    colorbar(title = 'Total Deaths') %>%
+    layout(
+        title = 'Covid Data by Country&lt;br&gt;
+            (Hover for breakdown)&lt;br&gt;
+            Source: &lt;a&gt;href="https://covid.ourworldindata.org/data/owid-covid-data.csv">Our World in Data&lt;a&gt;',
+        geo = g
+    )<br>
+    fig<br>
+    #htmlwidgets::saveWidget(fig, "fig_plot_geo.html")<br>
+                </pre>  
+                <iframe width="75%" height="800vw" src="covid-tracker1/fig_plot_geo.html" ></iframe>
+            </div>
+            <div>
+                <pre>
+                    <br>
+    library(streamgraph)<br>
+    sg_data <- data %>%
+        filter(grepl("^(Asia|Africa|Oceania|North America|South America|Europe)$", continent)) %>%
+        group_by(date, continent)<br>
+    daily_cases_smoothed_by_continent <- sg_data %>%
+        tally(wt= new_cases_smoothed) %>%
+        streamgraph("continent", "n", "date", interpolate = "cardinal") %>%
+        sg_fill_brewer(palette = "Greens") %>%
+        sg_legend(show = TRUE, label = "Continent:")
+    daily_cases_smoothed_by_continent<br>
+    #htmlwidgets::saveWidget(daily_cases_smoothed_by_continent, "daily_cases_smoothed_by_continent.html")<br>
+                </pre>
+                <iframe  class= "sg" width="600" height="600" src="covid-tracker1/daily_cases_smoothed_by_continent.html"></iframe>
+            </div>
+            <div>
+                <pre>
+                    <br>
+    state_covid_data <- read.csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv') %>% 
+        filter(date== yesterday)
+    state_codes <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv") %>%
+        select(state, code)
+    state_covid_data <- merge(state_codes, state_covid_data)<br>                       
+                </pre>
+                <pre>
+                    <br>
+    library(plotly)<br>
+    state_covid_data$hover <- with(state_covid_data, paste(state, '&lt;br&gt;',
+                            'Total Cases: ', cases, '&lt;br&gt;',
+                            'Total Deaths: ', deaths, '&lt;br&gt;',
+                            'Date: ', date))
+    # give state boundaries a white border
+    l <- list(color = toRGB('grey'), width = 0.5)
+    # specify some map projection/options
+    g <- list(
+    scope = 'usa',
+    projection = list(type = 'albers usa')
+    )
+    fig1 <- plot_geo(state_covid_data, locationmode = 'USA-states')
+    fig <- fig %>% add_trace(
+    z = ~deaths, text = ~hover, locations = ~code,
+    color = ~deaths, colors = 'Greens', marker = list(line = l)
+    )
+    fig1 <- fig %>% colorbar(title = 'Total Deaths')
+    fig1 <- fig %>% layout(
+        title = "Covid Data by State&lt;br&gt;
+            (Hover for breakdown)&lt;br&gt;
+            Source:&lt;a&gt;href='https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv'>New York Times&lt;a&gt;",
+        geo = g
+    )
+    fig1<br>
+    #htmlwidgets::saveWidget(fig1, "fig_plot_geo1.html")<br>
+                </pre>
+                <iframe width="75%" height="800vw" src="covid-tracker1/fig_plot_geo1.html" ></iframe>
+            </div>
+        </article>
+        <hr>
+    </main>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
