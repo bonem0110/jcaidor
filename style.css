@@ -6,14 +6,10 @@
 /* Homepage Main*/
 main {
     display: block;
+    width: 50%;
     text-align: left;
     font-size: 30px;
     margin: 150px auto 150px auto;
-}
-
-article {
-    width: 50%;
-    margin: 20px auto;
 }
 
 h1 {
@@ -41,7 +37,6 @@ main p {
 hr {
     color: burlywood;
     margin: 100px auto 100px auto;
-    width: 50%;
 }
 
 /* Navigation Bar*/ 
