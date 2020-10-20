@@ -8,21 +8,17 @@ main {
     display: block;
     width: 50%;
     text-align: left;
-    font-size: 30px;
     margin: 150px auto 150px auto;
 }
-
-h1 {
+h1, h2, h3 {
     font-family: 'Anton', sans-serif;
-    font-size: 5vw;
     color: #EF7427;
-    margin-block-end: 0;
+}
+h1 {
+    font-size: 5vw;
     text-align: center;
 }
-
 h2 {
-    font-family: 'Anton', sans-serif;
-    color: #EF7427;
     margin-block-end: 0;
     font-size: 3vw;
 }
@@ -33,63 +29,42 @@ main p {
     color: rgb(238, 187, 187);
     line-height: 1.5;
 }
-
 hr {
     color: burlywood;
     margin: 100px auto 100px auto;
 }
 
-/* Navigation Bar*/ 
+/* Header & Navigation Bar*/ 
 header p {
     font-size: 2vw;
-}
-
-header p#contact-email {
     width: 11.7em;
     position: fixed;
+    color: #EF7427;
+    background-color: transparent;
+}
+header p#contact-email {
     transform: rotate(90deg);
     bottom: 9em;
     right: -3.0em;
     text-align: right;
-    color: #EF7427;
-    background-color: transparent;
+    text-decoration: underline;
 }
-
 header p#full-name {
-    width: 11.7em;
-    position: fixed;
     top: 0em;
     left: 0em;
     text-align: right;
-    color: #EF7427;
     font-family: 'Anton', sans-serif;
-    background-color: transparent;
 }
-
-header p#full-name a:visited, header p#full-name a:link {
+header p#full-name a:visited, header p#full-name a:link, header p#contact-email a:visited, header p#contact-email a:link, nav a:link {
     color: #EF7427;
     text-decoration: none;
 }
-
 header p#job-title {
-    width: 11.7em;
-    position: fixed;
     transform: rotate(-90deg);
     top: 9em;
     left: -3.0em;
     text-align: right;
-    color: #EF7427;
-    background-color: transparent;
 }
-
-nav a:link,  a:visited {
-    color: rgb(238, 187, 187);
-}
-
-a:link {
-    color: #EF7427;
-}
-
 header nav {
     position: absolute;
     left: 0;
@@ -97,25 +72,24 @@ header nav {
     top: 0;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 20px;
-    font-size: 1.5vw;
+    font-size: 2vw;
 }
-
 header nav ul {
     display: block;
     position: absolute;
     right: 50px;
 }
-
 header nav ul li {
     display: inline-block;
     margin-left: 1em;
     list-style-type: none;
 }
-
 header nav ul li a {
-    text-decoration: none;
     width: auto;
+}
+a:visited, a:link {
+    color: #EF7427;
+    text-decoration: underline;
 }
 
 /* Projects.html Stylings*/ 
@@ -141,22 +115,19 @@ header nav ul li a {
     hr {
         margin: 50px auto 50px auto;
     }
-    main p {
-        font-size: 3vw;  
-    }
     header p#full-name {
         display: none;
     }
     .posts-list-item {
         line-height: 0;
     }
-    .posts-list-item h2{
-        font-size: 3vw;
-    }
-    .posts-list-item p{
+    .posts-list-item h2, .posts-list-item p{
         font-size: 3vw;
     }
     nav {
         font-size: small;
+    }
+    header nav, header p#contact-email, header p#job-title, main p{
+        font-size: 12px;
     }
   }
