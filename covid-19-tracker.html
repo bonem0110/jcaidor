@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <title>Covid-19 Tracker</title>
+    <link rel="icon" type="image/png" href="/Josue Logo.png">
 </head>
 <body>
     <header>    
@@ -81,7 +82,7 @@
             </div>
             <div>
                 <pre>
-                    <br class="sg">
+                    <br>
                     library(streamgraph)<br>
                     sg_data <- data %>%
                         filter(grepl("^(Asia|Africa|Oceania|North America|South America|Europe)$", continent)) %>%
@@ -94,7 +95,7 @@
                     daily_cases_smoothed_by_continent<br>
                     #htmlwidgets::saveWidget(daily_cases_smoothed_by_continent, "daily_cases_smoothed_by_continent.html")<br>
                 </pre>
-                <iframe width="50%" height=600 src="covid-tracker1/daily_cases_smoothed_by_continent.html"></iframe>
+                <iframe class="sg" width="50%" height=600 src="covid-tracker1/total_deaths_by_continent.html"></iframe>
             </div>
             <div>
                 <pre>
