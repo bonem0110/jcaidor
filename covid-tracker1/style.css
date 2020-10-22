@@ -95,10 +95,10 @@ a:visited, a:link {
 iframe {
     border-radius: 10px;
     border: none;
-    background-color: #eee;
 }
 .sg {
     margin: 0 auto;
+    background-color: #eee;
 }
 pre {
     font-family: monospace;
