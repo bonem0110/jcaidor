@@ -111,6 +111,8 @@ pre {
     border-radius: 10px;
     max-height: 250px;
     overflow: auto;
+    white-space: pre-line;
+    word-wrap: break-word;
 }
 
 /* Media Stylings */
