@@ -97,8 +97,8 @@ iframe {
     border: none;
 }
 .sg {
-    margin: 0 auto;
     background-color: #eee;
+    width: 60%
 }
 pre {
     font-family: monospace;
@@ -138,6 +138,9 @@ pre {
     }
     pre {
         max-height: 200px
+    }
+    .sg {
+        width: 80%;
     }
 }
 @media only screen and (max-height: 450px) {
