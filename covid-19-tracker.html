@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <title>Covid-19 Tracker</title>
-    <link rel="icon" type="image/png" href="/Josue Logo.png">
+    <link rel="icon" type="image/png" href="/jcaidor_logo.png">
 </head>
 <body>
     <header>    
@@ -73,12 +73,13 @@
                         title = 'Covid Data by Country&lt;br&gt;
                             (Hover for breakdown)&lt;br&gt;
                             Source: &lt;a&gt;href="https://covid.ourworldindata.org/data/owid-covid-data.csv">Our World in Data&lt;a&gt;',
+                        dragmode= FALSE,
                         geo = g
                     )<br>
                     fig<br>
                     #htmlwidgets::saveWidget(fig, "fig_plot_geo.html")<br>
                 </pre>  
-                <iframe class= "map" width="90%" height="800vw" src="covid-tracker1/fig_plot_geo.html" ></iframe>
+                <iframe class= "map" width="90%" height="800vw" src="covid-tracker1/fig_plot_geo.html"></iframe>
             </div>
             <div>
                 <pre>
@@ -95,8 +96,34 @@
                     daily_cases_smoothed_by_continent<br>
                     #htmlwidgets::saveWidget(daily_cases_smoothed_by_continent, "daily_cases_smoothed_by_continent.html")<br>
                 </pre>
-                <iframe class="sg" width="50%" height=600 src="covid-tracker1/total_deaths_by_continent.html"></iframe>
+                <iframe class="sg" width="50%" height=525 src="covid-tracker1/total_deaths_by_continent.html"></iframe>
             </div>
+            <!-- <div>
+                <pre>
+                    <br>
+                    x <- list(title = "Date")<br>
+                    y <- list(title= "Total Deaths")<br>
+                    tx <- highlight_key(data_cleaned, ~location)<br>
+                    fig2 <- plot_ly(tx, color = I("Black")) %>% 
+                    group_by(location) %>%
+                    add_lines(x = ~date, y = ~total_deaths) %>%
+                    layout(
+                        xaxis= x, 
+                        yaxis= y,
+                        title = 'Covid Data by Country&lt;br&gt;
+                            (Hover for breakdown)&lt;br&gt;
+                            Source: &lt;a&gt;href="https://covid.ourworldindata.org/data/owid-covid-data.csv">Our World in Data&lt;a&gt;'
+                        )<br>
+                    fig2 <- plotly::highlight(
+                    fig2, 
+                    on = "plotly_click", 
+                    selectize = TRUE, 
+                    dynamic = TRUE, 
+                    persistent = TRUE)<br>
+                    fig2<br>
+                </pre>
+                <iframe height= "650vw" width= "50%" src="covid-tracker1/fig_plot_geo2.html"></iframe> 
+            </div> -->
             <div>
                 <pre>
                     <br>
@@ -113,9 +140,9 @@
                                             'Total Cases: ', cases, '&lt;br&gt;',
                                             'Total Deaths: ', deaths, '&lt;br&gt;',
                                             'Date: ', date))<br>
-                    # give state boundaries a white border<br>
-                    l <- list(color = toRGB('grey'), width = 0.5)
-                    # specify some map projection/options<br>
+                    # give state boundaries a white border
+                    l <- list(color = toRGB('grey'), width = 0.5)<br>
+                    # specify some map projection/options
                     g <- list(
                     scope = 'usa',
                     projection = list(type = 'albers usa')
@@ -130,13 +157,14 @@
                         title = "Covid Data by State&lt;br&gt;
                             (Hover for breakdown)&lt;br&gt;
                             Source:&lt;a&gt;href='https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv'>New York Times&lt;a&gt;",
+                        dragmode= FALSE,
                         geo = g
                     )<br>
                     fig1<br>
                     #htmlwidgets::saveWidget(fig1, "fig_plot_geo1.html")<br>
                 </pre>
                 <iframe class="map" width="90%" height="800vw" src="covid-tracker1/fig_plot_geo1.html" ></iframe>
-            </div>
+            </div> 
         <hr>
     </main>
     <script src="https://d3js.org/d3.v6.min.js"></script>
