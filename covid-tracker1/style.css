@@ -11,7 +11,7 @@ main {
 }
 h1, h2, h3 {
     font-family: 'Anton', sans-serif;
-    color: #EF7427;
+    color: black;
 }
 h1 {
     font-size: 5vw;
@@ -38,7 +38,7 @@ header p {
     font-size: 2vw;
     width: 11.7em;
     position: fixed;
-    color: #EF7427;
+    color: black;
     background-color: transparent;
 }
 header p#contact-email {
@@ -55,7 +55,7 @@ header p#full-name {
     font-family: 'Anton', sans-serif;
 }
 header p#full-name a:visited, header p#full-name a:link, header p#contact-email a:visited, header p#contact-email a:link, nav a:link {
-    color: #EF7427;
+    color: black;
     text-decoration: none;
 }
 header p#job-title {
@@ -87,7 +87,7 @@ header nav ul li a {
     width: auto;
 }
 a:visited, a:link {
-    color: #EF7427;
+    color: black;
     text-decoration: underline;
 }
 
