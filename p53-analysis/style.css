@@ -88,10 +88,9 @@ header nav ul li a {
     width: auto;
 }
 a:visited, a:link {
-    color: black;
+    color: grey;
     text-decoration: underline;
 }
-
 pre {
     font-family: monospace;
     margin: 20px auto;
@@ -105,7 +104,6 @@ pre {
     line-height: 1em;
     background-color: #eee;
 }
-
 img {
     max-width: 100%;
 }
