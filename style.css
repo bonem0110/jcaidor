@@ -31,7 +31,7 @@ main p {
     line-height: 1.5;
 }
 hr {
-    color: burlywood;
+    color: grey;
     margin: 100px auto 100px auto;
 }
 
@@ -88,8 +88,8 @@ header nav ul li {
 header nav ul li a {
     width: auto;
 }
-a:visited, a:link, a {
-    color: grey;
+a:visited, a:link {
+    color: black;
     text-decoration: underline;
 }
 
