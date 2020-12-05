@@ -102,13 +102,15 @@ a:visited, a:link {
     font-size: 1vw;
     color: grey;
 }
-
 .posts-list-item h2 a:visited {
     /*color: #EF7427;*/
     color: black;
 }
 .posts-list-item p{
     font-size: 2vw;
+}
+article hr {
+    margin: 0 0;
 }
 
 /* Media Stylings */
