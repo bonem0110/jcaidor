@@ -88,7 +88,7 @@ header nav ul li {
 header nav ul li a {
     width: auto;
 }
-a:visited, a:link {
+a:visited, a:link, a {
     color: grey;
     text-decoration: underline;
 }
