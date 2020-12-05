@@ -66,7 +66,7 @@
             <br>
         </pre>
         <img src="p53-analysis/p53_images/2.png"/>
-        <img src="p53-analysis/p53_images/CentralDogma.jpg"/>
+        <img style="width: 100%;" src="p53-analysis/p53_images/CentralDogma.jpg"/>
         <pre>
             <br>
             p53_dna = p53_record.seq
@@ -99,17 +99,22 @@
             df.head()
             <br>
         </pre>
-        <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="p53-analysis/p53_images/5.png"/>
+        <!--<img style="display: block; margin-left: auto; margin-right: auto; width: 60%;" src="p53-analysis/p53_images/5.png"/>-->
+        <iframe style="display: block; width: 60%; float: left;" height= 170px src="p53-analysis/df1_head.html"></iframe>
         <pre>
             <br>
             from collections import Counter
             <br>
             df.nlargest(10, 'count')
             <br>
+        </pre>
+        <!--<img style="display: block; margin-left: auto; margin-right: auto; width: 60%;" src="p53-analysis/p53_images/6.png"/>-->
+        <iframe height= 290px width= 100% src="p53-analysis/df2.html"></iframe>
+        <pre>
+            <br>
             Counter(p53_protein).most_common(10)
             <br>
         </pre>
-        <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="p53-analysis/p53_images/6.png"/>
         <pre>
             <br>
             import py3Dmol
