@@ -42,16 +42,16 @@
                     data <- read.csv('https://covid.ourworldindata.org/data/owid-covid-data.csv')<br>
                     yesterday <- Sys.Date() - 1<br>
                     data_cleaned <- data %>%
-                        select(iso_code, continent, location, total_cases, total_deaths, new_deaths, date) %>%
-                        filter(date== yesterday & location != "World")<br>
+                    &emsp;&emsp;&emsp;&emsp;select(iso_code, continent, location, total_cases, total_deaths, new_deaths, date) %>%
+                    &emsp;&emsp;&emsp;&emsp;filter(date== yesterday & location != "World")<br>
                 </pre>
                 <pre>
                     <br>
                     library(plotly)<br>
                     data_cleaned$hover <- with(data_cleaned, paste(location, '&lt;br&gt;', 
-                                            "Total Cases: ", total_cases, '&lt;br&gt;', 
-                                            "Total Deaths: ", total_deaths, '&lt;br&gt;', 
-                                            "Date: ", date))<br>
+                    &emsp;&emsp;&emsp;&emsp;"Total Cases: ", total_cases, '&lt;br&gt;', 
+                    &emsp;&emsp;&emsp;&emsp;"Total Deaths: ", total_deaths, '&lt;br&gt;', 
+                    &emsp;&emsp;&emsp;&emsp;"Date: ", date))<br>
                     # light grey boundaries
                     l <- list(color = toRGB("grey"), width = 0.5)<br>
                     # specify map projection/options
@@ -62,15 +62,15 @@
                     )<br>
                     fig <- plot_geo(data_cleaned) %>% 
                     add_trace(
-                        z = ~total_deaths, color = ~total_deaths, text = ~hover, colors = 'Greens',
-                        text = ~location, locations = ~iso_code, marker = list(line = l)) %>%
+                    &emsp;&emsp;&emsp;&emsp;z = ~total_deaths, color = ~total_deaths, text = ~hover, colors = 'Greens',
+                    &emsp;&emsp;&emsp;&emsp;text = ~location, locations = ~iso_code, marker = list(line = l)) %>%
                     colorbar(title = 'Total Deaths') %>%
                     layout(
-                        title = 'Covid Data by Country&lt;br&gt;
-                            (Hover for breakdown)&lt;br&gt;
-                            Source: &lt;a&gt;href="https://covid.ourworldindata.org/data/owid-covid-data.csv">Our World in Data&lt;a&gt;',
-                        dragmode= FALSE,
-                        geo = g
+                    &emsp;&emsp;&emsp;&emsp;title = 'Covid Data by Country&lt;br&gt;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(Hover for breakdown)&lt;br&gt;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Source: &lt;a&gt;href="https://covid.ourworldindata.org/data/owid-covid-data.csv">Our World in Data&lt;a&gt;',
+                    &emsp;&emsp;&emsp;&emsp;dragmode= FALSE,
+                    &emsp;&emsp;&emsp;&emsp;geo = g
                     )<br>
                     fig<br>
                     #htmlwidgets::saveWidget(fig, "fig_plot_geo.html")<br>
@@ -82,13 +82,13 @@
                     <br>
                     library(streamgraph)<br>
                     sg_data <- data %>%
-                        filter(grepl("^(Asia|Africa|Oceania|North America|South America|Europe)$", continent)) %>%
-                        group_by(date, continent)<br>
+                    &emsp;&emsp;&emsp;&emsp;filter(grepl("^(Asia|Africa|Oceania|North America|South America|Europe)$", continent)) %>%
+                    &emsp;&emsp;&emsp;&emsp;group_by(date, continent)<br>
                     daily_cases_smoothed_by_continent <- sg_data %>%
-                        tally(wt= new_cases_smoothed) %>%
-                        streamgraph("continent", "n", "date", interpolate = "cardinal") %>%
-                        sg_fill_brewer(palette = "Greens") %>%
-                        sg_legend(show = TRUE, label = "Continent:")
+                    &emsp;&emsp;&emsp;&emsp;tally(wt= new_cases_smoothed) %>%
+                    &emsp;&emsp;&emsp;&emsp;streamgraph("continent", "n", "date", interpolate = "cardinal") %>%
+                    &emsp;&emsp;&emsp;&emsp;sg_fill_brewer(palette = "Greens") %>%
+                    &emsp;&emsp;&emsp;&emsp;sg_legend(show = TRUE, label = "Continent:")
                     daily_cases_smoothed_by_continent<br>
                     #htmlwidgets::saveWidget(daily_cases_smoothed_by_continent, "daily_cases_smoothed_by_continent.html")<br>
                 </pre>
@@ -124,18 +124,18 @@
                 <pre>
                     <br>
                     state_covid_data <- read.csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv') %>% 
-                        filter(date== yesterday)<br>
+                    &emsp;&emsp;&emsp;&emsp;filter(date== yesterday)<br>
                     state_codes <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv") %>%
-                        select(state, code)<br>
+                    &emsp;&emsp;&emsp;&emsp;select(state, code)<br>
                     state_covid_data <- merge(state_codes, state_covid_data)<br>                       
-                                </pre>
-                                <pre>
-                                    <br>
+                </pre>
+                <pre>
+                    <br>
                     library(plotly)<br>
                     state_covid_data$hover <- with(state_covid_data, paste(state, '&lt;br&gt;',
-                                            'Total Cases: ', cases, '&lt;br&gt;',
-                                            'Total Deaths: ', deaths, '&lt;br&gt;',
-                                            'Date: ', date))<br>
+                    &emsp;&emsp;&emsp;&emsp;'Total Cases: ', cases, '&lt;br&gt;',
+                    &emsp;&emsp;&emsp;&emsp;'Total Deaths: ', deaths, '&lt;br&gt;',
+                    &emsp;&emsp;&emsp;&emsp;'Date: ', date))<br>
                     # give state boundaries a white border
                     l <- list(color = toRGB('grey'), width = 0.5)<br>
                     # specify some map projection/options
@@ -150,11 +150,11 @@
                     )<br>
                     fig1 <- fig %>% colorbar(title = 'Total Deaths')<br>
                     fig1 <- fig %>% layout(
-                        title = "Covid Data by State&lt;br&gt;
-                            (Hover for breakdown)&lt;br&gt;
-                            Source:&lt;a&gt;href='https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv'>New York Times&lt;a&gt;",
-                        dragmode= FALSE,
-                        geo = g
+                    &emsp;&emsp;&emsp;&emsp;title = "Covid Data by State&lt;br&gt;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(Hover for breakdown)&lt;br&gt;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Source:&lt;a&gt;href='https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv'>New York Times&lt;a&gt;",
+                    &emsp;&emsp;&emsp;&emsp;dragmode= FALSE,
+                    &emsp;&emsp;&emsp;&emsp;geo = g
                     )<br>
                     fig1<br>
                     #htmlwidgets::saveWidget(fig1, "fig_plot_geo1.html")<br>
