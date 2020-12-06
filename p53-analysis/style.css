@@ -136,4 +136,11 @@ td, table {
     header nav, header p#contact-email, header p#job-title, main p{
         font-size: 12px;
     }
+    pre {
+        font-size: 12px;
+    }
+    .lists {
+        display: block;
+        width: 100%;
+    }
   }
