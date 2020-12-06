@@ -51,6 +51,7 @@
         </p>
         <p style="text-align: center;"><em>(Click, drag, and zoom)</em></p>
         <div style="height: 30vw; width: 100%; position: relative;" class='viewer_3Dmoljs' data-pdb='3TS8' data-backgroundcolor='0xffffff' data-style='cartoon:color=spectrum'></div>
+        
         <pre>
             <br>
             from Bio import SeqIO
@@ -59,14 +60,32 @@
             &emsp;&emsp;&emsp;&emsp;print(record)
             <br>
         </pre>
-        <img src="p53-analysis/p53_images/1.png"/>
+
+        <pre style="background-color: white;">
+            <br>
+            ID: U94788.1
+            Name: U94788.1
+            Description: U94788.1 Human p53 (TP53) gene, complete cds
+            Number of features: 0
+            Seq('TTCCCATCAAGCCCTAGGGCTCCTCGTGGCTGCTGGGAGTTGTAGTCTGAACGC...TGG')
+            <br>
+        </pre>
+
         <pre>
             <br>
             p53_record = SeqIO.read('sequence.fasta', 'fasta')
             <br>
         </pre>
-        <img src="p53-analysis/p53_images/2.png"/>
+
+        <pre style="background-color: white;">
+            <br>
+            SeqRecord(seq=Seq('TTCCCATCAAGCCCTAGGGCTCCTCGTGGCTGCTGGGAGTTGTAGTCTGAACGC...TGG'), 
+            id='U94788.1', name='U94788.1', description='U94788.1 Human p53 (TP53) gene, 
+            complete cds', dbxrefs=[])
+            <br>
+        </pre>
         <img style="width: 100%;" src="p53-analysis/p53_images/CentralDogma.jpg"/>
+
         <pre>
             <br>
             p53_dna = p53_record.seq
@@ -76,6 +95,7 @@
             p53_protein = p53_mRNA.translate()
             <br>
         </pre>
+
         <pre>
             <br>
             p53_AA = p53_protein.split('*')
@@ -83,9 +103,9 @@
             p53_AA_clean = [str(seq) for seq in p53_AA]
             <br>
         </pre>
-        <div>
-            <img style="float: left;" width= 50% src="p53-analysis/p53_images/3.png"/>
-            <img width= 50% src="p53-analysis/p53_images/4.png"/>
+        <div style="height: 250px;">
+            <iframe height= "100%" width= 50% src="p53-analysis/lst1.html"></iframe>
+            <iframe style="float: left;"  height= "100%" width= 50% src="p53-analysis/lst2.html"></iframe>
         </div>
 
         <pre>
@@ -99,8 +119,9 @@
             df.head()
             <br>
         </pre>
-        <!--<img style="display: block; margin-left: auto; margin-right: auto; width: 60%;" src="p53-analysis/p53_images/5.png"/>-->
-        <iframe style="display: block; width: 60%; float: left;" height= 170px src="p53-analysis/df1_head.html"></iframe>
+
+        <iframe style="display: block; width: 100%; float: left;" height= 190px src="p53-analysis/df1_head.html"></iframe>
+
         <pre>
             <br>
             from collections import Counter
@@ -108,13 +129,15 @@
             df.nlargest(10, 'count')
             <br>
         </pre>
-        <!--<img style="display: block; margin-left: auto; margin-right: auto; width: 60%;" src="p53-analysis/p53_images/6.png"/>-->
-        <iframe height= 290px width= 100% src="p53-analysis/df2.html"></iframe>
+
+        <iframe style="word-break:break-all;" height= 290px width= 100% src="p53-analysis/df2.html"></iframe>
+
         <pre>
             <br>
             Counter(p53_protein).most_common(10)
             <br>
         </pre>
+
         <pre>
             <br>
             import py3Dmol
@@ -125,7 +148,9 @@
             view.png()
             <br>
         </pre>
+
         <img width = 100% src="p53-analysis/p53_images/p53.png"/>
+
         <div>
             <h2>References</h2>
             <p>Bioinformatics, Volume 31, Issue 8, 15 April 2015, Pages 1322–1324, 
@@ -139,6 +164,7 @@
                 <a href="https://www.hindawi.com/journals/bmri/2011/978312/?msclkid=9c70e6362b811e1900c1b8e009410194" target="_blank" style="overflow: hidden;">https://www.hindawi.com/journals/bmri/2011/978312/?msclkid=9c70e6362b811e1900c1b8e009410194</a>
             </p>
         </div>
+
     </main>
     <script src="https://3Dmol.org/build/3Dmol-min.js" async></script>
 </body>
