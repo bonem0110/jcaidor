@@ -95,7 +95,7 @@ pre {
     font-family: monospace;
     margin: 20px auto;
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 10px;
     max-height: 250px;
     overflow: auto;
@@ -106,6 +106,20 @@ pre {
 }
 img {
     max-width: 100%;
+}
+iframe {
+    border: hidden;
+}
+td, table {
+    font-family: monospace;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+    font-size: 14px;
+}
+.lst {
+    word-wrap: break-word;
+    font-family: monospace;
+    font-size: 14px;
 }
 
 /* Media Stylings */
