@@ -93,27 +93,6 @@ a:visited, a:link {
     text-decoration: underline;
 }
 
-/* Projects.html Stylings*/ 
-.posts-list-item {
-    line-height: .5;
-    font-size: 1.5vw;
-}
-.date, .categories {
-    font-size: 1vw;
-    color: grey;
-}
-
-.posts-list-item h2 a:visited {
-    /*color: #EF7427;*/
-    color: black;
-}
-.posts-list-item p{
-    font-size: 2vw;
-}
-article hr {
-    margin: 0 0;
-}
-
 /* Media Stylings */
 @media only screen and (max-width: 600px) {
     hr {
@@ -121,12 +100,6 @@ article hr {
     }
     header p#full-name {
         display: none;
-    }
-    .posts-list-item {
-        line-height: 0;
-    }
-    .posts-list-item h2, .posts-list-item p{
-        font-size: 3vw;
     }
     nav {
         font-size: small;
