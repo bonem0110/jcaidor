@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
     <title>p53 Analysis Using BioPython</title>
     <link rel="icon" type="image/png" href="../../jcaidor_logo.png">
@@ -32,7 +32,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="covid_tracker">
         <h1>p53 Analysis Using BioPython</h1>
         <hr>
         <p>
@@ -58,7 +58,7 @@
             data-style='cartoon:color=spectrum'>
         </div>
         
-        <pre>
+        <pre class="nws">
             <br>
             from Bio import SeqIO
             <br>
@@ -67,7 +67,7 @@
             <br>
         </pre>
 
-        <pre style="background-color: white;">
+        <pre  class="nws" style="background-color: white;">
             <br>
             ID: U94788.1
             Name: U94788.1
@@ -77,13 +77,13 @@
             <br>
         </pre>
 
-        <pre>
+        <pre class="nws">
             <br>
             p53_record = SeqIO.read('sequence.fasta', 'fasta')
             <br>
         </pre>
 
-        <pre style="background-color: white;">
+        <pre class="nws" style="background-color: white;">
             <br>
             SeqRecord(seq=Seq('TTCCCATCAAGCCCTAGGGCTCCTCGTGGCTGCTGGGAGTTGTAGTCTGAACGC...TGG'), 
             id='U94788.1', name='U94788.1', description='U94788.1 Human p53 (TP53) gene, 
@@ -95,7 +95,7 @@
             <img style="width: 100%;" src="p53_images/CentralDogma.jpg"/>
         </a>
 
-        <pre>
+        <pre class="nws">
             <br>
             p53_dna = p53_record.seq
             <br>
@@ -105,7 +105,7 @@
             <br>
         </pre>
 
-        <pre>
+        <pre class="nws">
             <br>
             p53_AA = p53_protein.split('*')
             <br>
@@ -117,7 +117,7 @@
             <iframe style="float: left;"  height= "100%" width= 50% src="lst2.html"></iframe>
         </div>
 
-        <pre>
+        <pre class="nws">
             <br>
             import pandas as pd
             <br>
@@ -131,7 +131,7 @@
 
         <iframe style="display: block; width: 100%; float: left;" height= 190px src="df1_head.html"></iframe>
 
-        <pre>
+        <pre class="nws">
             <br>
             from collections import Counter
             <br>
@@ -141,13 +141,13 @@
 
         <iframe style="word-break:break-all;" height= 290px width= 100% src="df2.html"></iframe>
 
-        <pre>
+        <pre class="nws">
             <br>
             Counter(p53_protein).most_common(10)
             <br>
         </pre>
         
-        <pre style="background-color: white;">
+        <pre class="nws" style="background-color: white;">
             <br>
             [('L', 737),
             ('S', 572),
@@ -162,7 +162,7 @@
             <br>
         </pre>
 
-        <pre>
+        <pre class="nws">
             <br>
             import py3Dmol
             <br>
