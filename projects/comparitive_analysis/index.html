@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
+    <title>p53 Analysis Using BioPython</title>
+    <link rel="icon" type="image/png" href="../../jcaidor_logo.png">
+</head>
+<body>
+    <header>    
+        <div class="personal-info"></div>
+            <p class="rainbow-text-simple" id="contact-email">
+                <a href="mailto:josuecaidor@gmail.com">Josuecaidor@gmail.com</a>
+            </p>
+            <p class="rainbow-text-static" id="job-title">
+                Biologist + Bioinformatician
+            </p>
+            <p id="full-name">
+                <a href="../../index.html">Josue J. <br> Caidor</a>
+             </p>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="../../index.html">About</a>
+                </li>
+                <li>
+                    <a href="../index.html">Projects</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Comparitive Analysis</h1>
+        <h2 style="text-align: center;">SARS-CoV-2, SARS, and MERS</h2>
+        <hr>
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            from Bio import Phylo
+            from io import StringIO
+            <br>
+            handle = StringIO("(((SARS Tor2, SARS-CoV-2),(MERS)));")
+            tree = Phylo.read(handle, "newick")
+            <br>
+            Phylo.draw_ascii(tree)
+            <br>
+        </pre>
+
+        <pre style="background-color: white;">
+            <br>
+                                              ______________________ Tor2
+                        _____________________|
+_ _____________________|                     |______________________ SARS-CoV-2
+                       |
+                       |_____________________ ______________________ MERS
+            <br>
+        </pre>
+
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            from Bio.SeqUtils import GC
+            from Bio import SeqIO
+            <br>
+            gc_covid = [GC(rec.seq) for rec in SeqIO.parse('covid-19.fasta', 'fasta')]
+            gc_sars = [GC(rec.seq) for rec in SeqIO.parse('SARS.fasta', 'fasta')]
+            gc_mers = [GC(rec.seq) for rec in SeqIO.parse('MERS.fasta', 'fasta')]
+            <br>
+        </pre>
+
+        <pre style="white-space: pre-line; word-wrap: break-word; background-color: white;">
+            <br>
+            [37.97277865097148]
+            [40.7616550704178]
+            [41.23642883229855]
+            <br>
+        </pre>
+
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            from Bio import pairwise2
+            from Bio.pairwise2 import format_alignment
+            <br>
+            covid_seq = SeqIO.read('covid-19.fasta', 'fasta').seq
+            sars_seq = SeqIO.read('SARS.fasta', 'fasta').seq
+            mers_seq = SeqIO.read('MERS.fasta', 'fasta').seq
+            <br>
+            covid_sars_alignments = pairwise2.align.globalxx(covid_seq[0:100], sars_seq[0:100])
+            covid_mers_alignments = pairwise2.align.globalxx(covid_seq[0:100], mers_seq[0:100])
+            <br>
+            format_alignment(*covid_sars_alignments[0])
+            <br>
+        </pre>
+
+        <pre style="background-color: white;">
+            <br>
+ -ATTA-AAGGTTT-A-TAC-CTTCCCAGG-TAA-CAA--AC--CAACCAACTTTCGAT-CTCTTGT-AGAT-CT--G-TTCTCTAAACGAACTT---TAAAAT-C--TGTGTG----GCTGTCACTC--
+  |||  || |  | | ||  |||    || | | |    ||  |  ||  |  ||| | ||||||  |||  ||  | || | | |||||||||   |||||  |  ||| ||    || || | ||  
+ GATT-TAA-G--TGAATA-GCTT----GGCT-ATC--TCACTTC--CC--C--TCG-TTCTCTTG-CAGA-ACTTTGATT-T-T-AACGAACTTAAATAAAA-GCCCTGT-TGTTTAGC-GT-A-TCGT
+            <br>
+        Score = 71
+            <br>
+        </pre>
+
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            format_alignment(*covid_mers_alignments[0])
+            <br>
+        </pre>
+
+        <pre style="background-color: white;">
+            <br>
+ ATTAA--AGGTTTAT-ACCTT-CCCAGGTAACAAA-CCAACCAACTT-TCGATCTCTTGTAGATCTGTTCTCTAAACGAACTTTAAAATCTGTGTG-GCTGTCA-CTC---
+ | | |  |||||| | ||| | ||||||  | ||| |||||||||   |||||||||||||||||||||||||||||||||||||||||||||||  ||||||  |||   
+ A-T-ATTAGGTTT-TTACC-TACCCAGG--A-AAAGCCAACCAAC--CTCGATCTCTTGTAGATCTGTTCTCTAAACGAACTTTAAAATCTGTGT-AGCTGTC-GCTCGGC
+            <br>
+        Score = 89
+            <br>
+        </pre>
+
+        <a href="https://courses.lumenlearning.com/wmopen-nmbiology1/chapter/the-central-dogma/"
+            target="_blank">
+            <img style="width: 100%;" src="comparitive_analysis_images/CentralDogma.jpg"/>
+        </a>
+
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            covid_mRNA = covid_seq.transcribe()
+            covid_protein = covid_mRNA.translate()
+            <br>
+            sars_mRNA = sars_seq.transcribe()
+            sars_protein = sars_mRNA.translate()
+            <br>
+            mers_mRNA = mers_seq.transcribe()
+            mers_protein = mers_mRNA.translate()
+            <br>
+        </pre>
+
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            from collections import Counter
+            <br>
+            covid_protein_freq = Counter(covid_protein)
+            sars_protein_freq = Counter(sars_protein)
+            mers_protein_freq = Counter(mers_protein)
+            <br>
+            from matplotlib import pyplot as plt
+            from matplotlib import pylab
+            <br>
+            plt.bar(covid_protein_freq.keys(), covid_protein_freq.values())
+            plt.xlabel('Proteins')
+            plt.ylabel('n')
+            plt.title('Protein Frequency in Covid-19')
+            <br>
+            plt.bar(sars_protein_freq.keys(), sars_protein_freq.values())
+            plt.xlabel('Proteins')
+            plt.ylabel('n')
+            plt.title('Protein Frequency in SARS')
+            <br>
+            plt.bar(mers_protein_freq.keys(), mers_protein_freq.values())
+            plt.xlabel('Proteins')
+            plt.ylabel('n')
+            plt.title('Protein Frequency in MERS')
+            <br>
+        </pre>
+
+        <img style="display: block; margin-left: auto; margin-right: auto;" width="60%" src="comparitive_analysis_images/plt1.png" alt="">
+        <div style="display: block; margin-left: auto; margin-right: auto; width: 100%;">
+            <img style="float: right;" width="50%" src="comparitive_analysis_images/plt2.png" alt="">
+            <img width="50%" src="comparitive_analysis_images/plt3.png" alt="">
+        </div>
+
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            from Bio.SeqUtils import molecular_weight
+            <br>
+            molecular_weight(covid_seq)
+            molecular_weight(sars_seq)
+            molecular_weight(mers_seq)
+            <br>
+        </pre>
+
+        <pre style="white-space: pre-line; word-wrap: break-word; background-color: white;">
+            <br>
+            9241219.214400413
+            9192097.564700488
+            9299088.414500311
+            <br>
+        </pre>
+
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            def dot_plot(seq1, seq2, **kwargs):
+                data = [
+                    [
+                        (seq1[i:i+1] != seq2[j:j+1])
+                        for j in range(len(seq1)-1)
+                    ]
+                for i in range(len(seq2)-1)
+                ]
+                title  = kwargs.pop('title')
+                xlabel = kwargs.pop('xlabel')
+                ylabel = kwargs.pop('ylabel')
+                pylab.imshow(data)
+                pylab.title(title)
+                pylab.xlabel(xlabel)
+                pylab.ylabel(ylabel)
+                pylab.show()
+            <br>
+            short_covid_seq = covid_seq[0:100]
+            short_sars_seq = sars_seq[0:100]
+            short_mers_seq = mers_seq[0:100]
+            <br>
+            dot_plot(
+                short_covid_seq, short_sars_seq, 
+                xlabel='Covid-19', 
+                ylabel='SARS', 
+                title='Covid-19 vs. Sars \n (first 100 bp)'
+            )
+            <br>
+            dot_plot(
+                short_covid_seq, short_mers_seq, 
+                xlabel='Covid-19', 
+                ylabel='MERS', 
+                title='Covid-19 vs. Mers \n (first 100 bp)'
+            )
+            <br>
+        </pre>
+
+        <div style="display: block; margin-left: auto; margin-right: auto; width: 100%;">
+            <img style="float: right;" width="50%" src="comparitive_analysis_images/dp1.png" alt="">
+            <img width="50%" src="comparitive_analysis_images/dp2.png" alt="">
+        </div>
+
+        <p style="text-align: center;">COVID-19</p>
+
+        <div 
+            style="height: 30vw; width: 100%; position: relative;" 
+            class='viewer_3Dmoljs' 
+            data-pdb='6LU7' 
+            data-backgroundcolor='white' 
+            data-style='cartoon:color=spectrum'>
+        </div>
+        
+        <div style="display: block; margin-left: auto; margin-right: auto; width: 100%;">
+            <div>
+                <br>
+                <p style="width: 50%; float:right">SARS</p>
+                <p width="50%">MERS</p>
+                <br>
+            </div>
+            <div 
+            style="height: 20vw; width: 50%; float:right" 
+            class='viewer_3Dmoljs' 
+            data-pdb='2OG3' 
+            data-backgroundcolor='0xffffff' 
+            data-style='cartoon:color=spectrum'>
+            </div>
+
+            <div 
+                style="height: 20vw; width: 50%; position: relative;" 
+                class='viewer_3Dmoljs' 
+                data-pdb='6PXH' 
+                data-backgroundcolor='0xffffff' 
+                data-style='cartoon:color=spectrum'>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://3Dmol.org/build/3Dmol-min.js" async></script>
+</body>
+</html>

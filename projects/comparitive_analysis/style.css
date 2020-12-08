@@ -1,0 +1,144 @@
+* {
+    background-color: white;
+    box-sizing: border-box;
+}
+
+/* Homepage Main*/
+main {
+    display: block;
+    width: 50%;
+    text-align: left;
+    margin: 150px auto 150px auto;
+}
+h1, h2, h3 {
+    font-family: 'Anton', sans-serif;
+    color: black;
+}
+h1 {
+    font-size: 5vw;
+    text-align: center;
+}
+h2 {
+    margin-block-end: 0;
+    font-size: 3vw;
+}
+main p {
+    font-family: sans-serif;
+    font-size: 16px;   
+    margin-block-end: 36px;
+    color: grey;
+    line-height: 1.5;
+}
+hr {
+    
+    color: grey;
+    margin: 100px auto 100px auto;
+}
+
+/* Header & Navigation Bar*/ 
+header p {
+    font-size: 2vw;
+    width: 11.7em;
+    position: fixed;
+    color: black;
+    background-color: transparent;
+}
+header p#contact-email {
+    transform: rotate(90deg);
+    bottom: 9em;
+    right: -3.0em;
+    text-align: right;
+    text-decoration: underline;
+}
+header p#full-name {
+    top: 0em;
+    left: 0em;
+    text-align: right;
+    font-family: 'Anton', sans-serif;
+}
+header p#full-name a:visited, header p#full-name a:link, header p#contact-email a:visited, header p#contact-email a:link, nav a:link {
+    color: black;
+    text-decoration: none;
+}
+header p#job-title {
+    transform: rotate(-90deg);
+    top: 9em;
+    left: -3.0em;
+    text-align: right;
+}
+header nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2vw;
+}
+header nav ul {
+    display: block;
+    position: absolute;
+    right: 50px;
+}
+header nav ul li {
+    display: inline-block;
+    margin-left: 1em;
+    list-style-type: none;
+}
+header nav ul li a {
+    width: auto;
+}
+a:visited, a:link {
+    color: black;
+    text-decoration: underline;
+}
+pre {
+    font-family: monospace;
+    margin: 20px auto;
+    font-size: 14px;
+    border-radius: 10px;
+    overflow-x: scroll;
+    background-color: #eee;
+    overflow: scroll;
+    max-height: 250px;
+}
+img {
+    max-width: 100%;
+}
+iframe {
+    border: hidden;
+}
+td, table {
+    font-family: monospace;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+    font-size: 14px;
+}
+.lst {
+    word-wrap: break-word;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* Media Stylings */
+@media only screen and (max-width: 600px) {
+    hr {
+        margin: 50px auto 50px auto;
+    }
+    header p#full-name {
+        display: none;
+    }
+    nav {
+        font-size: small;
+    }
+    header nav, header p#contact-email, header p#job-title, main p{
+        font-size: 12px;
+    }
+    pre {
+        font-size: 12px;
+    }
+    .lists {
+        display: block;
+        width: 100%;
+    }
+  }
