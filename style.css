@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* Homepage Main*/
+/* Main Template Stylings*/
 main {
     display: block;
     width: 50%;
@@ -25,10 +25,13 @@ h2 {
 }
 main p {
     font-family: sans-serif;
-    font-size: 1.8vw;   
+    font-size: 16px;   
     margin-block-end: 36px;
     color: gray;
     line-height: 1.5;
+}
+.about-me p {
+    font-size: 1.8vw;
 }
 hr {
     color: grey;
@@ -93,6 +96,62 @@ a:visited, a:link {
     text-decoration: underline;
 }
 
+/*Project Index Stylings*/
+.posts-list-item {
+    line-height: .5;
+    font-size: 1.5vw;
+}
+.date, .categories {
+    font-size: 1vw;
+    color: grey;
+}
+.posts-list-item h2 a:visited {
+    /*color: #EF7427;*/
+    color: black;
+}
+.posts-list-item p{
+    font-size: 2vw;
+}
+.posts-list hr {
+    margin: 0 0;
+}
+
+/* pre stylings */
+pre {
+    font-family: monospace;
+    margin: 20px auto;
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: #eee;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    max-height: 250px;
+}
+.nws {
+    white-space: pre-line;
+}
+
+/* p53-analysis list.html Stylings*/
+.lst {
+    word-wrap: break-word;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/*misc Stylings*/
+iframe {
+    border: hidden;
+}
+img {
+    max-width: 100%;
+}
+td, table {
+    font-family: monospace;
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
 /* Media Stylings */
 @media only screen and (max-width: 600px) {
     hr {
@@ -106,5 +165,18 @@ a:visited, a:link {
     }
     header nav, header p#contact-email, header p#job-title, main p{
         font-size: 12px;
+    }
+    .posts-list-item {
+        line-height: 0;
+    }
+    .posts-list-item h2, .posts-list-item p{
+        font-size: 3vw;
+    }
+    pre {
+        font-size: 12px;
+    }
+    .lists {
+        display: block;
+        width: 100%;
     }
   }
