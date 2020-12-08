@@ -30,6 +30,7 @@ main p {
     line-height: 1.5;
 }
 hr {
+    
     color: grey;
     margin: 100px auto 100px auto;
 }
@@ -101,7 +102,6 @@ pre {
     overflow: auto;
     white-space: pre-line;
     word-wrap: break-word;
-    line-height: 1em;
     background-color: #eee;
 }
 img {
