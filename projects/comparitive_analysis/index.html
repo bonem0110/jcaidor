@@ -36,6 +36,7 @@
         <h1>Comparitive Analysis</h1>
         <h2 style="text-align: center;">SARS-CoV-2, SARS, and MERS</h2>
         <hr>
+        
         <pre style="white-space: pre-line; word-wrap: break-word;">
             <br>
             from Bio import Phylo
@@ -52,7 +53,7 @@
             <br>
                                               ______________________ Tor2
                         _____________________|
-_ _____________________|                     |______________________ SARS-CoV-2
+  _____________________|                     |______________________ SARS-CoV-2
                        |
                        |_____________________ ______________________ MERS
             <br>
@@ -192,38 +193,38 @@ _ _____________________|                     |______________________ SARS-CoV-2
         <pre style="white-space: pre-line; word-wrap: break-word;">
             <br>
             def dot_plot(seq1, seq2, **kwargs):
-                data = [
-                    [
-                        (seq1[i:i+1] != seq2[j:j+1])
-                        for j in range(len(seq1)-1)
-                    ]
-                for i in range(len(seq2)-1)
-                ]
-                title  = kwargs.pop('title')
-                xlabel = kwargs.pop('xlabel')
-                ylabel = kwargs.pop('ylabel')
-                pylab.imshow(data)
-                pylab.title(title)
-                pylab.xlabel(xlabel)
-                pylab.ylabel(ylabel)
-                pylab.show()
+            &emsp;&emsp;&emsp;&emsp;data = [
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;(seq1[i:i+1] != seq2[j:j+1])
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;for j in range(len(seq1)-1)
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;]
+            &emsp;&emsp;&emsp;&emsp;for i in range(len(seq2)-1)
+            &emsp;&emsp;&emsp;&emsp;]
+            &emsp;&emsp;&emsp;&emsp;title  = kwargs.pop('title')
+            &emsp;&emsp;&emsp;&emsp;xlabel = kwargs.pop('xlabel')
+            &emsp;&emsp;&emsp;&emsp;ylabel = kwargs.pop('ylabel')
+            &emsp;&emsp;&emsp;&emsp;pylab.imshow(data)
+            &emsp;&emsp;&emsp;&emsp;pylab.title(title)
+            &emsp;&emsp;&emsp;&emsp;pylab.xlabel(xlabel)
+            &emsp;&emsp;&emsp;&emsp;pylab.ylabel(ylabel)
+            &emsp;&emsp;&emsp;&emsp;pylab.show()
             <br>
             short_covid_seq = covid_seq[0:100]
             short_sars_seq = sars_seq[0:100]
             short_mers_seq = mers_seq[0:100]
             <br>
             dot_plot(
-                short_covid_seq, short_sars_seq, 
-                xlabel='Covid-19', 
-                ylabel='SARS', 
-                title='Covid-19 vs. Sars \n (first 100 bp)'
+            &emsp;&emsp;&emsp;&emsp;short_covid_seq, short_sars_seq, 
+            &emsp;&emsp;&emsp;&emsp;xlabel='Covid-19', 
+            &emsp;&emsp;&emsp;&emsp;ylabel='SARS', 
+            &emsp;&emsp;&emsp;&emsp;title='Covid-19 vs. Sars \n (first 100 bp)'
             )
             <br>
             dot_plot(
-                short_covid_seq, short_mers_seq, 
-                xlabel='Covid-19', 
-                ylabel='MERS', 
-                title='Covid-19 vs. Mers \n (first 100 bp)'
+            &emsp;&emsp;&emsp;&emsp;short_covid_seq, short_mers_seq, 
+            &emsp;&emsp;&emsp;&emsp;xlabel='Covid-19', 
+            &emsp;&emsp;&emsp;&emsp;ylabel='MERS', 
+            &emsp;&emsp;&emsp;&emsp;title='Covid-19 vs. Mers \n (first 100 bp)'
             )
             <br>
         </pre>
@@ -250,8 +251,9 @@ _ _____________________|                     |______________________ SARS-CoV-2
             view3.png()
             <br>
         </pre>
+        <br>
 
-        <p style="text-align: center;">COVID-19</p>
+        <p style="text-align: center;">SARS-CoV-2</p>
 
         <div 
             style="height: 30vw; width: 100%; position: relative;" 
