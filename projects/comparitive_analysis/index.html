@@ -233,6 +233,24 @@ _ _____________________|                     |______________________ SARS-CoV-2
             <img width="50%" src="comparitive_analysis_images/dp2.png" alt="">
         </div>
 
+        <pre style="white-space: pre-line; word-wrap: break-word;">
+            <br>
+            import py3Dmol
+            <br>
+            view1 = py3Dmol.view(query='pdb:6LU7')
+            view1.setStyle({'cartoon': {'color': 'spectrum'}})
+            view1.png()
+            <br>
+            view2 = py3Dmol.view(query='pdb:2OG3')
+            view2.setStyle({'cartoon': {'color': 'spectrum'}})
+            view2.png()
+            <br>
+            view3 = py3Dmol.view(query='pdb:6PXH')
+            view3.setStyle({'cartoon': {'color': 'spectrum'}})
+            view3.png()
+            <br>
+        </pre>
+
         <p style="text-align: center;">COVID-19</p>
 
         <div 
