@@ -123,7 +123,7 @@ pre {
     hr {
         margin: 50px auto 50px auto;
     }
-    main p {
+    main p, main ul {
         font-size: 3vw;  
     }
     header p#full-name {
