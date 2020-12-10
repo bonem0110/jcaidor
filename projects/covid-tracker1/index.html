@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,6 @@
     <title>Covid-19 Tracker</title>
     <link rel="icon" type="image/png" href="../../jcaidor_logo.png">
 </head>
-
 <body>
     <header>
         <div class="personal-info"></div>
@@ -36,7 +34,7 @@
         </nav>
     </header>
     <main>
-        <h1>Covid-19 Tracker</h1>
+        <h1><a style="text-decoration: none;" href="">Covid-19 Tracker</a></h1>
         <hr>
         <p>Covid-19 is a severe and contagious respiratory illness caused by a new Coronavirus,
             SARS-Cov-2.
@@ -46,7 +44,7 @@
             <br>
             <br>
         </p>
-        <ul>
+        <ul style="font-size: 16px;">
             <li>fever or chills</li>
             <li>cough</li>
             <li>shortness of breath or difficulty breathing</li>
@@ -58,6 +56,7 @@
             <li>nausea or vomiting</li>
             <li>diarrhea</li>
         </ul>
+        <br>
         <p>
             Cases are rising and the CDC recommends maintaining social distance, wearing facial covering,
             and staying home if you suspect that you may have Covid-19. For information on symptoms,
@@ -104,6 +103,10 @@
                 #htmlwidgets::saveWidget(fig, "fig_plot_geo.html")<br>
             </pre>
             <iframe class="map" width="90%" height="800vw" src="fig_plot_geo.html"></iframe>
+        </div>
+        <div>
+            <p style="color: black;">For a month by month look at worldwide covid cases for the year 2020, click <a href="subplot1.html" target="_blank">here</a></p>
+            <br><br>
         </div>
         <div>
             <pre>
@@ -163,10 +166,10 @@
             </pre>
             <iframe class="map" width="90%" height="800vw" src="fig_plot_geo1.html"></iframe>
         </div>
+
         <hr>
     </main>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
