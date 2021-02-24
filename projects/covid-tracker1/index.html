@@ -89,7 +89,7 @@
                 )<br>
                 fig <- plot_geo(data_cleaned) %>% 
                 add_trace(
-                &emsp;&emsp;&emsp;&emsp;z = ~total_deaths, color = ~total_deaths, text = ~hover, colors = 'Greens',
+                &emsp;&emsp;&emsp;&emsp;z = ~total_deaths, color = ~total_deaths, text = ~hover, colors = 'RdBu',
                 &emsp;&emsp;&emsp;&emsp;text = ~location, locations = ~iso_code, marker = list(line = l)) %>%
                 colorbar(title = 'Total Deaths') %>%
                 layout(
@@ -118,7 +118,7 @@
                 daily_cases_smoothed_by_continent <- sg_data %>%
                 &emsp;&emsp;&emsp;&emsp;tally(wt= new_cases_smoothed) %>%
                 &emsp;&emsp;&emsp;&emsp;streamgraph("continent", "n", "date", interpolate = "cardinal") %>%
-                &emsp;&emsp;&emsp;&emsp;sg_fill_brewer(palette = "Greens") %>%
+                &emsp;&emsp;&emsp;&emsp;sg_fill_brewer(palette = "Blues") %>%
                 &emsp;&emsp;&emsp;&emsp;sg_legend(show = TRUE, label = "Continent:")
                 daily_cases_smoothed_by_continent<br>
                 #htmlwidgets::saveWidget(daily_cases_smoothed_by_continent, "daily_cases_smoothed_by_continent.html")<br>
@@ -151,7 +151,7 @@
                 fig1 <- plot_geo(state_covid_data, locationmode = 'USA-states')<br>
                 fig <- fig %>% add_trace(
                 z = ~deaths, text = ~hover, locations = ~code,
-                color = ~deaths, colors = 'Greens', marker = list(line = l)
+                color = ~deaths, colors = 'RdBu', marker = list(line = l)
                 )<br>
                 fig1 <- fig %>% colorbar(title = 'Total Deaths')<br>
                 fig1 <- fig %>% layout(
@@ -165,6 +165,27 @@
                 #htmlwidgets::saveWidget(fig1, "fig_plot_geo1.html")<br>
             </pre>
             <iframe class="map" width="90%" height="800vw" src="fig_plot_geo1.html"></iframe>
+        </div>
+
+        <h2 style="text-align: left; width: 50%; margin: 0 auto;">References</h2>
+
+        <div>
+            <br>
+            <p>Hasell, J., Mathieu, E., Beltekian, D. et al. A cross-country database of COVID-19 testing. Sci Data 7, 345 (2020).
+                <a href="https://doi.org/10.1038/s41597-020-00688-8" 
+                    target="_blank" 
+                    style="overflow: hidden;">https://doi.org/10.1038/s41597-020-00688-8
+                </a>
+            </p>
+            <br>
+
+            <p>The New York Times. Coronavirus (Covid-19) Data in the United States (2021).
+                <a href="https://github.com/nytimes/covid-19-data" 
+                    target="_blank" 
+                    style="overflow: hidden;">https://github.com/nytimes/covid-19-data
+                </a>
+            </p>
+
         </div>
 
         <hr>
